@@ -1,0 +1,21 @@
+.width150 {
+  width: 50px;
+}
+.dialogClass {
+  overflow: scroll;
+  max-height: 30%;
+
+}
+.btn-download{
+  margin: 0 15px 0 10px;
+}
+
+.btn-download .fa{
+  margin-right: 7px;
+}
+.clsUnit{
+  text-align: left;
+  margin-left:10px;
+}
+.download-by-button .ui-menu.ui-menu-dynamic{right: 0!important;left: auto!important;}
+.btn-download .fa{margin-right: 0!important;}

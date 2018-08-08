@@ -1,0 +1,28 @@
+.login .signup-wrap {
+    max-width:700px;
+}
+.login .signup-wrap .login-title h4{
+    color: #f7a80d;
+}
+.login .login-wrap .form-group {
+    position: relative;
+}
+.error-message {
+    position: absolute;
+    z-index: 1;
+    left: 15px;
+    right: 15px;
+    line-height: 1.5;
+}
+.login .alert {
+    margin-top: 0;
+    padding: 0px 10px;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.login .login-button.signup-submit{margin-top: 12px;text-align: center;}
+.login .login-button.signup-submit>button{max-width: 210px;color: #080808;text-transform: capitalize;font-weight: bold;margin-bottom: 8px;}
+.Sign_up_form label{margin-bottom: 2px;font-size: 12px;font-weight: bold;color: #686767;}
+.signup_box .login-top{margin: 3px 0;}
+.signup_box .login-wrap{margin: 20px auto 0;}
+a.jump-to-link{color:#f7a80d;}

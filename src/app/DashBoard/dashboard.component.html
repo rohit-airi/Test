@@ -1,0 +1,125 @@
+<!-- <h5 class="with-border">Dashboard</h5> -->
+<div class="row">
+  <div class="col-lg-6 col-md-6 mb-30">
+    <div class="chart-statistic-box">
+      <div class="chart-txt">
+        <div class="chart-txt-top">
+          <p>
+            <span class="unit">$</span>
+            <span class="number">1540</span>
+          </p>
+          <p class="caption">Week income</p>
+        </div>
+        <table class="tbl-data">
+          <tbody>
+            <tr>
+              <td class="price color-purple">$120</td>
+              <td>Orders</td>
+            </tr>
+            <tr>
+              <td class="price color-yellow">$15</td>
+              <td>Investments</td>
+            </tr>
+            <tr>
+              <td class="price color-lime">$55</td>
+              <td>Others</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-container">
+        <div class="chart-container-in">
+          <img src="assets/themes/images/blue-graph.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-sm-6">
+        <article class="statistic-box red">
+          <div>
+            <div class="number">$20,000</div>
+            <div class="caption">
+              <div>total Sales</div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+      <div class="col-sm-6">
+        <article class="statistic-box purple">
+          <div>
+            <div class="number">$2,000</div>
+            <div class="caption">
+              <div>TOTAL ITEMS</div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <article class="statistic-box yellow">
+          <div>
+            <div class="number">104</div>
+            <div class="caption">
+              <div>New Users</div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+      <div class="col-sm-6">
+        <article class="statistic-box green">
+          <div>
+            <div class="number">700</div>
+            <div class="caption">
+              <div>TOTAL Users</div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel">
+      <div class="panel-heading">
+        <h6 class="panel-title">Recent Five Registered User</h6>
+      </div>
+      <div class="panel-body">
+        <p-dataTable [value]="userList" [loading]="loadingUser" emptyMessage="No Records to Display" [rows]="6" resizableColumns="true"
+          columnResizeMode="expand">
+          <p-column field="FirstName" header="Name">
+          </p-column>
+          <p-column field="Email" header="Email"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel">
+      <div class="panel-heading">
+        <h6 class="panel-title">Recent Five Log Comment</h6>
+      </div>
+      <div class="panel-body" style="overflow:hidden">
+        <p-dataTable [value]="logList" [loading]="loadingLog" emptyMessage="No Records to Display" [rows]="5" resizableColumns="true"
+          columnResizeMode="expand">
+          <p-column field="ParentItemID" [style]="{'text-align': 'center'}" header="Parent"></p-column>
+          <p-column field="ChildItemID" [style]="{'text-align': 'center'}" header="Child"></p-column>
+          <p-column field="ChangeType" [style]="{'text-align': 'center'}" header="Type"></p-column>
+          <p-column field="CommentedOn" header="Change On" [style]="{'text-align': 'center'}">
+            <ng-template let-col let-logList="rowData" pTemplate="body">
+              <span>{{logList[col.field] | date: 'MMM-dd-yyyy'}}</span>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0' }"></ngx-loading>
+<p-growl></p-growl>
+<div class="login signup_box">
+    <h4 style="color:#f7a80d; text-align: center">Add New User</h4>
+      <div class="register-wrap signup-wrap">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="login-body">
+            <section class="Sign_up_form">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>First Name<span class="Required_Icon text-danger"> *</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="userForm.firstName" formControlName="firstName" maxlength="25" #firstName required>
+                      <div *ngIf="form.controls['firstName'].dirty && !form.controls['firstName'].valid && form.controls['firstName'].touched && form.controls['firstName'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['firstName'].errors.required">First Name is required</div>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="form.controls['firstName'].errors?.maxlength">
+                        First Name reached max length
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" [(ngModel)]="userForm.lastName"  class="form-control" formControlName="lastName" maxlength="25" #lastName>
+                      <div *ngIf="form.controls['lastName'].dirty && !form.controls['lastName'].valid && form.controls['lastName'].touched && form.controls['lastName'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['lastName'].errors.required">Last Name is required</div>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="form.controls['lastName'].errors?.maxlength">
+                        Last Name reached max length
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label>Email<span class="Required_Icon text-danger"> *</span></label>
+                        <input type="text" name="email" [(ngModel)]="userForm.email" (change)="CheckEmail($event)" class="form-control" formControlName="email" #email required>
+                      <div *ngIf="form.controls['email'].dirty && !form.controls['email'].valid && form.controls['email'].touched && form.controls['email'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['email'].errors.required">Email is required</div>
+                        <div class="alert alert-danger" *ngIf="!form.controls['email'].errors.required && form.controls['email'].errors.pattern">This is not a valid email</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Address<span class="Required_Icon"></span></label>
+                        <textarea name="address" [(ngModel)]="userForm.address" class="form-control" formControlName="address"></textarea>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Password<span class="Required_Icon text-danger"> *</span></label>
+                        <input type="password" name="password"  class="form-control" formControlName="password" #password>
+                      <div *ngIf="form.controls['password'].dirty && !form.controls['password'].valid && form.controls['password'].touched && form.controls['password'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['password'].errors.required">Password is required</div>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="form.controls['password'].errors?.minlength">
+                        Password length should between 6 to 15
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Confirm Password<span class="Required_Icon text-danger"> *</span></label>
+                        <input type="password" name="confirmPassword" [(ngModel)]="userForm.password" class="form-control" formControlName="confirmPassword" #confirmPassword required>
+                      <div *ngIf="form.controls['confirmPassword'].dirty && !form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched && form.controls['confirmPassword'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['confirmPassword'].errors.required">Confirm Password is required</div>
+                      </div>
+                      <div class="alert alert-danger"  *ngIf="form.controls['confirmPassword'].errors?.MatchPassword">Password not match</div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Country<span class="text-danger"> *</span></label>
+                        <p-dropdown [options]="countryList" [(ngModel)]="userForm.countryid" formControlName="countryId" placeholder="Select a Country" [style]="{'width':'100%','height':'36px'}" optionLabel="Country">
+                        </p-dropdown>
+                      <div *ngIf="form.controls['countryId'].dirty && !form.controls['countryId'].valid && form.controls['countryId'].touched && form.controls['countryId'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['countryId'].errors.required">Country is required</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Mobile No.</label>
+                        <input type="text" name="mobileno" [(ngModel)]="userForm.mobileno" class="form-control" minlength="10" maxlength="10" (keypress)="numberOnly($event)" formControlName="mobileNo" #mobileNo>
+                    </div>
+                </div>
+            </section>
+                <div class="login-button register-submit">
+                    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+                    <button type="button" class="btn" [routerLink]="['/app/User']">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

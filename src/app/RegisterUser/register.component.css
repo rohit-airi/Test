@@ -1,0 +1,3 @@
+.login .register-wrap { margin: 20px auto; border: solid 1px #d8e2e7;  background: #fff;}
+.login .login-button.register-submit{margin-top: 12px;text-align: center;}
+.login .login-button.register-submit>button{max-width: 210px;color: #080808;text-transform: capitalize;font-weight: bold;margin-bottom: 8px;}

@@ -1,0 +1,8 @@
+.width150 {
+    width: 50px;
+}
+.dialogClass {
+    overflow: scroll;
+    max-height: 30%;
+
+  }

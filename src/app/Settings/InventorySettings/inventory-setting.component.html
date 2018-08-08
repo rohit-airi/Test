@@ -1,0 +1,150 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <h4><label class="label label-default" for="InventoryType">Inventory Type</label></h4>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <h4><label class="label label-default" for="Display">Display</label></h4>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <h4><label class="label label-default" for="Available">Available</label></h4>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <h4><label class="label label-default" for="Partial">Partial</label></h4>
+    </div>
+</div>
+<form [formGroup]="form1" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-fulfillable-quantity</label></div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname1" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues1"></p-radioButton>
+            <p-radioButton name="groupname1" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues1"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname2" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form1')" [(ngModel)]="availableSelectedValues2"></p-radioButton>
+            <p-radioButton name="groupname2" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form1')" [(ngModel)]="availableSelectedValues2"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues3" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form1.controls['Partial'].valid&&form1.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname3" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues3"></p-radioButton>
+            <p-radioButton name="groupname3" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues3"></p-radioButton> -->
+</div>
+<!-- <button pButton type="submit" label="Click">sasasq</button> -->
+</div>
+</form>
+<form [formGroup]="form2" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-unsellable-quantity</label></div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname4" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues4"></p-radioButton>
+            <p-radioButton name="groupname4" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues4"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname5" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form2')" [(ngModel)]="availableSelectedValues5"></p-radioButton>
+            <p-radioButton name="groupname5" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form2')" [(ngModel)]="availableSelectedValues5"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues6" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form2.controls['Partial'].valid&&form2.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname6" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues6"></p-radioButton>
+            <p-radioButton name="groupname6" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues6"></p-radioButton> -->
+</div>
+</div>
+</form>
+<form [formGroup]="form3" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-reserved-quantity</label></div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname4" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues7"></p-radioButton>
+            <p-radioButton name="groupname4" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues7"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname5" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form3')" [(ngModel)]="availableSelectedValues8"></p-radioButton>
+            <p-radioButton name="groupname5" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form3')" [(ngModel)]="availableSelectedValues8"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues9" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form3.controls['Partial'].valid&&form3.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname6" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues9"></p-radioButton>
+            <p-radioButton name="groupname6" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues9"></p-radioButton> -->
+</div>
+</div>
+</form>
+<form [formGroup]="form4" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-inbound-working-quantity</label></div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname4" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues10"></p-radioButton>
+            <p-radioButton name="groupname4" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues10"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname5" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form4')" [(ngModel)]="availableSelectedValues11"></p-radioButton>
+            <p-radioButton name="groupname5" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form4')" [(ngModel)]="availableSelectedValues11"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues12" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form4.controls['Partial'].valid&&form4.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname6" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues12"></p-radioButton>
+            <p-radioButton name="groupname6" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues12"></p-radioButton> -->
+</div>
+</div>
+</form>
+<form [formGroup]="form5" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-inbound-shipped-quantity</label></div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname4" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues13"></p-radioButton>
+            <p-radioButton name="groupname4" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues13"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname5" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form5')" [(ngModel)]="availableSelectedValues14"></p-radioButton>
+            <p-radioButton name="groupname5" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form5')" [(ngModel)]="availableSelectedValues14"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues15" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form5.controls['Partial'].valid&&form5.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname6" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues15"></p-radioButton>
+            <p-radioButton name="groupname6" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues15"></p-radioButton> -->
+</div>
+</div>
+</form>
+<form [formGroup]="form6" (ngSubmit)="OnSubmit(form1.value,form2.value,form3.value,form4.value,form5.value,form6.value)">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-3"><label>afn-inbound-receiving-quantity</label>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname4" value="Yes" formControlName="Display" label="Yes" [(ngModel)]="displaySelectedValues16"></p-radioButton>
+            <p-radioButton name="groupname4" value="No" formControlName="Display" label="No" [(ngModel)]="displaySelectedValues16"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <p-radioButton name="groupname5" value="Yes" label="Yes" formControlName="Available" (onClick)="Avail('form6')" [(ngModel)]="availableSelectedValues17"></p-radioButton>
+            <p-radioButton name="groupname5" value="No" label="No" formControlName="Available" (onClick)="NonAvail('form6')" [(ngModel)]="availableSelectedValues17"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <input type="text" pInputText formControlName="Partial" size="5" [(ngModel)]="partialSelectedValues18" />%
+            <div style="width:100px;" class="ui-message ui-messages-error ui-corner-all" *ngIf="!form6.controls['Partial'].valid&&form6.controls['Partial'].dirty">
+<i class="fa fa-close"></i> Invalid Input
+</div>
+<!-- <p-radioButton name="groupname6" value="Yes" label="Yes" formControlName="Partial" [(ngModel)]="partialSelectedValues18"></p-radioButton>
+            <p-radioButton name="groupname6" value="No" label="No" formControlName="Partial" [(ngModel)]="partialSelectedValues18"></p-radioButton> -->
+</div>
+</div>
+<div class="ui-g-12 ui-md-6 ui-lg-3">
+    <button pButton type="submit" label="Submit" [disabled]="!form1.valid" [disabled]="!form2.valid" [disabled]="!form3.valid"
+        [disabled]="!form4.valid" [disabled]="!form5.valid" [disabled]="!form6.valid"></button>
+</div>
+</form>

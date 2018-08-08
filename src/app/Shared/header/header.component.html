@@ -1,0 +1,59 @@
+<ngx-loading [show]="headerloading" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
+<header class="header">
+  <div class="container-fluid clearfix">
+    <div class="header-in clearfix">
+      <div class="brand">
+        <img src="assets/themes/images/logo.png" class="desktop-view" alt="" />
+        <img src="assets/themes/images/logo-2.png" class="mobile-view" alt="" />
+      </div>
+      <div class="header-menus clearfix">
+        <div *ngIf="isAuthorize" class="header-togglebtn">
+          <button (click)="toggleSidebar()">
+            <i class="icon">
+              <img src="assets/svg/menu.svg " alt=" " />
+            </i>
+          </button>
+        </div>
+        <div class="header-right ">
+          <div class="user-profile">
+            <!-- <select id="select" #headerType [disabled]=headerloading class="form-control" [(ngModel)]="currentmarketPlace" (change)="updateMarketPlace()">
+                           <option *ngFor="let marketplace of marketPlaceModel" [value]="marketplace.MWSMarketPlaceId">{{marketplace.MarketPlaceName}}
+                          </option>
+                        </select> -->
+          </div>
+          <div class="user-profile relative">
+            <div class="dropdown-content" dropdown>
+              <div dropdownToggle>
+                <figure class="user-img ">
+                  <img src="assets/themes/images/user.png " alt="User Pic " />
+                </figure>
+                <div class="user-name">
+                  <div class="username-text">{{userInfoModel.Name}}</div>
+                  <!--<p *ngIf="userInfoModel.Data.user.SuperUser">Adminstrator</p>-->
+                  <p>{{userInfoModel.Role}}</p>
+                  <i class="icon user-arrow ">
+                    <img src="assets/svg/down-arrow.svg " alt=" " />
+                  </i>
+                </div>
+              </div>
+
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li *ngIf="isAuthorize" role="menuitem">
+                  <a class="dropdown-item" routerLink="settings/changepassword">
+                    <i class="fa fa-fw fa-gear"></i> Settings
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li role="menuitem">
+                  <a class="dropdown-item" (click)="logOut()">
+                    <i class="fa fa-fw fa-power-off"></i> Log Out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

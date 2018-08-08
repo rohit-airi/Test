@@ -1,0 +1,30 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input #gb type="text" name="import" pInputText size="50" placeholder="Search">
+        </div>
+        <p-dataTable [value]="ImportNotAmazon" [loading]="loading1" loadingIcon="fa-spinner" scrollable="true" scrollWidth="100%" [globalFilter]="gb" #dt
+            [responsive]="true" emptyMessage="No Records to Display" [rows]="10" [paginator]="true"
+            [rowsPerPageOptions]="[10,20,50,100]">
+            <p-header> Import Sku not available in the Amazon List</p-header>
+            <p-column field="AmazonSku" [style]="{'text-align': 'center'}" [style]="{'width':'40%'}" header="AmazonSku"></p-column>
+        </p-dataTable>
+    </div>
+</div>
+<div class="row">
+        <div class="col-lg-12">
+            <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none;margin-top:30px;">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input #gbb type="text" name="amazon" pInputText size="50" placeholder="Search">
+            </div>
+            <p-dataTable [value]="AmazonNotImport"  [loading]="loading2" loadingIcon="fa-spinner" scrollable="true" scrollWidth="100%" [globalFilter]="gbb" #dt
+                [responsive]="true" emptyMessage="No Records to Display" [rows]="10" [paginator]="true"
+                [rowsPerPageOptions]="[10,20,50,100]">
+                <p-header>Amazon Sku not available in the Import List</p-header>
+
+                <p-column field="AmazonSku" [style]="{'text-align': 'center'}" [style]="{'width':'40%'}" header="AmazonSku"></p-column>
+            </p-dataTable>
+        </div>
+    </div>

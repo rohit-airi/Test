@@ -1,0 +1,92 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<h5 class="with-border">Inventory</h5>
+<div class="panel">
+    <div>
+       <div class="row upload-wrap">
+            <div class="col-md-1 text-md-left">
+              <label class="">
+                Merchant:
+              </label>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" id="select" [(ngModel)]="currentMerchant" (change)="loadParentData()">
+                <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+                </option>
+              </select>
+            </div>
+          </div>
+        <tabset>
+            <tab>
+                <ng-template tabHeading>
+                    Upload Parent
+                </ng-template>
+                <div class="upload-wrap">
+                  <button (click)="OnParentorChildDelete('Parent')" class="btn btn-primary custom-delete-btn">Delete Parent Data</button>
+                  <button (click)="OnParentorChildSample(1)" class="btn btn-primary custom-delete-btn pull-right">Sample File</button>
+                    <div class="upload">
+                        <p-fileUpload customUpload="true" auto="auto" (uploadHandler)="getFiles($event)"></p-fileUpload>
+                        <div class="">
+                            <img src="assets/themes/images/upload.png" alt=" " />
+                            <h6>Upload Your File</h6>
+                        </div>
+                    </div>
+                    <div class="upload-condition">Keep Header: Sku, Name, AssignedTo</div>
+                </div>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    Upload Child
+                </ng-template>
+                <div class="upload-wrap">
+                  <button (click)="OnParentorChildDelete('Child')" class="btn btn-primary custom-delete-btn">Delete Child Data</button>
+                  <button (click)="OnParentorChildSample(2)" class="btn btn-primary custom-delete-btn pull-right">Sample File</button>
+                    <div class="upload">
+                        <p-fileUpload customUpload="true" auto="auto" (uploadHandler)="getChildFiles($event)"></p-fileUpload>
+
+                        <div class="">
+                            <img src="assets/themes/images/upload.png" alt=" " />
+                            <h6>Upload Your File</h6>
+                        </div>
+                    </div>
+                    <div class="upload-condition">Keep Header: Sku, AmazonSku, SellerCloudSku, ParentSku, ItemName, Cost, Size, Color, Category</div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>
+
+<div class="listing-table">
+    <p-dataTable [value]="ParentList" [loading]="grdParentloading" (onRowClick)="openModal(template, $event)" [responsive]="true" selectionMode="single" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="Name" header="Name"></p-column>
+        <p-column field="AmazonSku" header="Sku"></p-column>
+        <p-column field="AssignedTo" header="Assigned To"></p-column>
+    </p-dataTable>
+</div>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+<ng-template #template>
+    <div class="modal-header">
+        <h5 class="modal-title pull-left">{{currentParentSku}} / {{currentParent}}</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-table">
+
+            <p-dataTable [value]="childList" [loading]="grdChildloading" selectionMode="single" [rows]="10" [paginator]="true" [pageLinks]="5" [responsive]="true">
+                <p-header>Variations</p-header>
+                <p-column field="Sku" header="Item Sku"></p-column>
+                <p-column field="ParentSku" header="Parent Sku"></p-column>
+                <p-column field="AmazonSku" header="Amazon Sku"></p-column>
+                <p-column field="SellerCloudSku" header="Seller Cloud Sku"></p-column>
+                <p-column field="Color" header="Color"></p-column>
+                <p-column field="Size" header="Size"></p-column>
+                <p-column field="Cost" header="Cost"></p-column>
+                <p-column field="Available" header="Available"></p-column>
+                <p-column field="Unavailable" header="Unavailable"></p-column>
+                <!-- <p-column field="Category" header="Category"></p-column> -->
+            </p-dataTable>
+
+        </div>
+    </div>
+</ng-template>

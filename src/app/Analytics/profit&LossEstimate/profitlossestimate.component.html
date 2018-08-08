@@ -1,0 +1,78 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0' }"></ngx-loading>
+<div class="panel">
+  <div class="panel-heading">
+    <h4 class="panel-title">Profit & Loss Estimate Report Filter</h4>
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="reportForm" class="form-horizontal register-wrap">
+      <div class="data-filter adreportfilter">
+        <div class="data-filter-top clearfix">
+            <div class="form-group mr-4">
+                <label>Merchant</label>
+                <div class="form-control-wicon">
+                  <select class="form-control" id="select" formControlName="Merchant" [(ngModel)]="currentMerchant" (change)="updateMerchant()">
+                      <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+                      </option>
+                    </select>
+                    </div>
+              </div>
+            <div class="form-group mr-4">
+                <label>Marketplace</label>
+                <div class="form-control-wicon">
+                  <select class="form-control" id="select" formControlName="MarketPlace" [(ngModel)]="currentmarketPlace">
+                    <option *ngFor="let marketplace of marketPlaceModel" [value]="marketplace.MWSMarketPlaceId">{{marketplace.MarketPlaceName}}
+                      </option>
+                    </select>
+                    </div>
+              </div>
+        </div>
+        <div class="data-filter-bottom clearfix">
+          <div class="form-group">
+            <label>As on date</label>
+            <div class="form-control-wicon">
+              <i class="icon" (click)="dp1.show() ">
+                <img src="assets/svg/calendar.svg" alt="" />
+              </i>
+              <input [(ngModel)]="fromDate" type="text"  [maxDate]="todayDate" formControlName="AsonDate" class="form-control" bsDatepicker #dp1="bsDatepicker" [bsConfig]="bsConfig">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Parent SKU</label>
+            <p-autoComplete [(ngModel)]="parentSku" (onSelect)="selectparentSku()" [ngModelOptions]="{standalone: true}" [suggestions]="parentSkuList" (completeMethod)="searchparentSku($event)" inputStyleClass="form-control">
+            </p-autoComplete>
+          </div>
+          <div class="form-group">
+            <label>Child SKU</label>
+            <p-autoComplete [(ngModel)]="childSku" formControlName="ChildSku" [suggestions]="childSkuList" (completeMethod)="searchFilter2Childsku($event)" inputStyleClass="form-control">
+            </p-autoComplete>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <p-autoComplete [(ngModel)]="category" formControlName="Category"  [suggestions]="categoryList"  (completeMethod)="searchCategory($event)"  inputStyleClass="form-control">
+            </p-autoComplete>
+          </div>
+          <div class="form-group">
+              <label>Lisiting Manager</label>
+              <p-autoComplete *ngIf="isuserAdmin" [ngModelOptions]="{standalone: true}" (onSelect)="selectListManager()" [(ngModel)]="lstManager" [suggestions]="listManager" (completeMethod)="searchListManager($event)"
+                              placeholder="List-Manager" ></p-autoComplete>
+              <input [(ngModel)]="lstManager" *ngIf="!isuserAdmin" [ngModelOptions]="{standalone: true}" id="inputtxtManager" type="text" disabled="isuserAdmin" pInputText >
+            </div>
+          <div class="form-group form-btn">
+              <button style="margin:23px 7px 13px 15px;" [disabled]="!reportForm.valid" (click)="onsubmitFilter()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+      </div>
+    </form>
+    <div class="data-graph text-center mb-20">
+      <div class="clsUnit" *ngIf="IsDownloadEnable">
+      <p-radioButton  (click)="onChangeUnit('normal')"  name="unit" value="normal" label="Numeric" [(ngModel)]="selectedUnit" inputId="opt1"></p-radioButton>
+      <p-radioButton (click)="onChangeUnit('percent')" name="unit" value="percent" label="Percent" [(ngModel)]="selectedUnit" inputId="opt2"></p-radioButton>
+      </div>
+        <Button class="btn btn-xs _hDateRangeGrouping btn-download download-by-button" *ngIf="IsDownloadEnable" label="Download" icon="fa-download" (click)="downloadProfitReport(false)">Download</Button>
+      <div id="profitEstimateReport" width='100%'></div>
+    </div>
+
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

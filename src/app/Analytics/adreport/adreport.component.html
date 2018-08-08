@@ -1,0 +1,92 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0' }"></ngx-loading>
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Ads Report Filter</h4>
+    </div>
+    <div class="panel-body">
+        <form [formGroup]="reportForm" class="form-horizontal register-wrap">
+            <div class="data-filter adreportfilter">
+                <div class="data-filter-top clearfix">
+                    <div class="form-group mr-4">
+                        <label>Merchant</label>
+                        <div class="form-control-wicon">
+                          <select class="form-control" id="select" formControlName="Merchant" [(ngModel)]="currentMerchant" (change)="updateMerchant()">
+                              <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+                              </option>
+                            </select>
+                            </div>
+                      </div>
+                <div class="form-group  mr-4">
+                    <label>Marketplace</label>
+                    <div class="form-control-wicon">
+                      <select class="form-control" id="select" formControlName="MarketPlace" [(ngModel)]="currentmarketPlace">
+                        <option *ngFor="let marketplace of marketPlaceModel" [value]="marketplace.MWSMarketPlaceId">{{marketplace.MarketPlaceName}}
+                          </option>
+                        </select>
+                        </div>
+                  </div>
+                  </div>
+                <div class="data-filter-bottom clearfix">
+                    <div class="form-group">
+                        <label>Date From</label>
+                        <div class="form-control-wicon">
+                            <i class="icon" (click)="dp.show() ">
+                <img src="assets/svg/calendar.svg" alt="" />
+              </i>
+                            <input [(ngModel)]="fromDate" [maxDate]="todayDate" type="text" formControlName="FromDate" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="[bsConfig]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Date To</label>
+                        <div class="form-control-wicon">
+                            <i class="icon" (click)="dp1.show() ">
+                <img src="assets/svg/calendar.svg" alt="" />
+              </i>
+                            <input [(ngModel)]="toDate" type="text" [maxDate]="todayDate" [minDate]="fromDate" formControlName="ToDate" class="form-control" bsDatepicker #dp1="bsDatepicker" [bsConfig]="bsConfig">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Parent SKU</label>
+                        <p-autoComplete [(ngModel)]="parentSku" [ngModelOptions]="{standalone: true}" [suggestions]="parentSkuList" (completeMethod)="searchparentSku($event)" inputStyleClass="form-control">
+                        </p-autoComplete>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <p-autoComplete [(ngModel)]="category" formControlName="Category" [suggestions]="categoryList" (completeMethod)="searchCategory($event)" inputStyleClass="form-control">
+                        </p-autoComplete>
+                    </div>
+                    <div class="form-group">
+                        <label>Lisiting Manager</label>
+                        <!--<input type="text" class="form-control" />-->
+                        <p-autoComplete *ngIf="isuserAdmin" [ngModelOptions]="{standalone: true}" (onSelect)="selectListManager()" [(ngModel)]="lstManager" [suggestions]="listManager" (completeMethod)="searchListManager($event)"   inputStyleClass="form-control" placeholder="List-Manager"> </p-autoComplete>
+                        <input [(ngModel)]="lstManager" *ngIf="!isuserAdmin" [ngModelOptions]="{standalone: true}" id="inputtxtManager"  class="form-control" type="text" disabled="isuserAdmin" pInputText>
+                    </div>
+                    <div class="form-group form-btn">
+                        <label>&nbsp;</label>
+                      <button [disabled]="!reportForm.valid" (click)="onsubmitFilter()" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <div class="">
+
+          <div class="clsUnit col-md-12" *ngIf="IsDownloadEnable">
+            <p-radioButton  (click)="onChangeUnit()"  name="unit" value="normal" label="Numeric" [(ngModel)]="selectedUnit" inputId="opt1"></p-radioButton>
+            <p-radioButton (click)="onChangeUnit()" name="unit" value="percent" label="Percent" [(ngModel)]="selectedUnit" inputId="opt2"></p-radioButton>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div id="adsconversion" width='100%' class="graphcontainer"></div>
+            </div>
+
+            <div class="col-md-6">
+              <div id="adsconversionvsNatural" width='100%' class="graphcontainer"></div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>

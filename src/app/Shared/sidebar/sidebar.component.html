@@ -1,0 +1,168 @@
+<aside *ngIf="isAuthorize" class="sidebar" [ngClass]="{'shift-sidebar': this.commonservice.toggleSidebar}">
+  <ul>
+    <li routerLinkActive="active">
+      <a routerLink="./dashboard">
+        <i class="fa icon">
+          <img src="assets/svg/windows.svg" alt="" />
+        </i>
+        <span> Dashboard</span>
+      </a>
+    </li>
+    <!-- <li routerLinkActive="active">
+            <a routerLink="./Register">
+                <i class="fa icon">
+                    <img src="assets/svg/user.svg" alt="" />
+                </i> <span> Users</span>
+            </a>
+        </li> -->
+    <li *ngIf="userInfoModel.Role!=='User'" routerLinkActive="active">
+      <a routerLink="./user">
+        <i class="fa icon">
+          <img src="assets/svg/user.svg" alt="" />
+        </i>
+        <span>Users List</span>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="./inventory">
+        <i class="fa icon">
+          <img src="assets/svg/invoice.svg" alt="" />
+        </i>
+        <span>Inventory</span>
+      </a>
+    </li>
+    <li>
+      <a class="havemenu" appDropdown>
+        <i class="fa icon">
+          <img src="assets/svg/report.svg" alt="" />
+        </i>
+        <span>Anayltics</span>
+        <i class="fa icon arrow">
+          <img src="assets/svg/down-arrow.svg" alt="" />
+        </i>
+      </a>
+
+      <ul class="right">
+        <li routerLinkActive="active">
+          <a routerLink="./analytics/inventoryreport">
+            <i class="fa icon">
+              <img src="assets/svg/report.svg" alt="" />
+            </i>
+            <span>Inventory Reports</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="./analytics/profitreport">
+            <i class="fa icon">
+              <img src="assets/svg/bars.svg" alt="" />
+            </i>
+            <span>Profit Reports</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="./analytics/plestimate">
+            <i class="fa icon">
+              <img src="assets/svg/Icon_2-512.png" alt="" />
+            </i>
+            <span>P&L Estimate</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="./analytics/ads-report">
+            <i class="fa icon">
+              <img src="assets/svg/report2.svg" alt="" />
+            </i>
+            <span>Ads Reports</span>
+          </a>
+        </li>
+
+      </ul>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="./log">
+        <i class="fa icon">
+          <img src="assets/svg/chat.svg" alt="" />
+        </i>
+        <span>Log Comments</span>
+      </a>
+    </li>
+    <!-- <li routerLinkActive="active">
+            <a routerLink="./Maintenance">
+                <i class="fa icon">
+                    <img src="assets/svg/wrench.svg" alt="" />
+                </i> <span>Maintenance</span>
+            </a>
+        </li> -->
+    <li>
+      <a class="havemenu" appDropdown>
+        <i class="fa icon">
+          <img src="assets/svg/settings.svg" alt="" />
+        </i>
+        <span>Settings</span>
+        <i class="fa icon arrow">
+          <img src="assets/svg/down-arrow.svg" alt="" />
+        </i>
+      </a>
+      <ul class="mycustom">
+        <!-- <li *ngIf="userInfoModel.Role!=='User'" routerLinkActive="active">
+                    <a routerLink="./Settings/InventorySettings"><i class="fa icon">
+                            <img src="assets/svg/settings.svg" alt="" />
+                        </i><span>Inventory Settings</span>
+                    </a>
+                </li> -->
+        <li class="m-l-5" routerLinkActive="active">
+          <a routerLink="./settings/marketplaces">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Marketplaces</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="./settings/changepassword">
+            <i class="fa fa-key">
+            </i>
+            <span>Change Password</span>
+          </a>
+        </li>
+
+        <li *ngIf="userInfoModel.Role!=='User'" routerLinkActive="active">
+          <a routerLink="./settings/scheduling">
+            <i class="fa fa-calendar">
+            </i>
+            <span>Report Scheduling</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="./settings/accountsetting">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Account Setting</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+            <a routerLink="./settings/advertisement">
+              <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <span>Advertisement Setting</span>
+            </a>
+          </li>
+      </ul>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="./dstbci">
+        <i class="fa icon">
+          <img src="assets/svg/wrench.svg" alt="" />
+        </i>
+        <span>DSTBCI</span>
+      </a>
+    </li>
+    <li *ngIf="!isAuthorize" routerLinkActive="active">
+      <a routerLink="./amazonsetup">
+        <i class="fa icon">
+          <img src="assets/svg/invoice.svg" alt="" />
+        </i>
+        <span>Amazon-Setup</span>
+      </a>
+    </li>
+  </ul>
+</aside>

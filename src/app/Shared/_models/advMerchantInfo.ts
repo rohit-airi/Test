@@ -1,0 +1,22 @@
+export class AdvMerchantInfo {
+     MerchantId:string;
+     MerchantAccountId:Number;
+     AuthTokenId:string;
+     ServiceUrl:string;
+     MerchantAccountName:string;
+     MarketPlaceIdJson:string;
+     UserAccountId:Number;
+     AdvAccessToken:string;
+     AdvRefreshToken:string;
+     AdvTokenType:string;
+     AdvTokenExpiredOn:string;
+     AdvApiEndPointNA:string;
+     AdvProfileIdNA:string;
+     AdvProfileInfoJsonNA:string;
+     AdvApiEndPointEU:string;
+     AdvProfileIdEU:string;
+     AdvProfileInfoJsonEU:string;
+     DefaultMarketplaceId:string;
+     IsActive:boolean;
+     IsDefault:boolean;
+}

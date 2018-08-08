@@ -1,0 +1,183 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    padding-top: 70px;
+    background: #fff;
+    z-index: 1;
+    height: 100%;
+    width: 225px;
+    transition: all 0.3s;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    border-right: solid 1px transparent;
+}
+
+.sidebar ul {
+    display: block;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar ul li {
+    padding: 0 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 1px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 20px 10px 45px;
+    color: #343434;
+    position: relative;
+    line-height: normal;
+    background: none;
+    text-align: left;
+    font-size: 14px;
+    border-radius: 0;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.sidebar ul li a .fa,
+.sidebar ul li a .icon {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    font-size: 17px;
+}
+
+.sidebar ul li a .icon img {
+    width: 17px;
+    height: 17px;
+}
+
+.sidebar ul li.active>a,
+.sidebar ul li.active:hover>a {
+    background: #f7a80d;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.sidebar ul li a:hover {
+    background: #eceff4;
+}
+
+.sidebar ul li a+ul {
+    height: auto;
+    padding: 0;
+    background: #e4e4e4;
+    display: none;
+}
+
+.sidebar ul li a+ul li {
+    height: auto;
+    padding: 0;
+}
+
+.sidebar ul li a.open+ul {
+    display: block;
+}
+
+.sidebar ul li .havemenu .arrow {
+    left: auto;
+    right: 5px;
+    top: 12px;
+    transition: all 0.3s ease-in;
+    transform: rotateZ(-90deg)
+}
+
+.sidebar ul li .havemenu .arrow img {
+    width: 10px;
+    height: 10px;
+}
+
+.sidebar ul li .havemenu.open .arrow {
+    transform: rotateZ(0deg)
+}
+
+.sidebar ul li .havemenu.open {
+    background: #d0d0d0;
+}
+
+
+/*
+.sidebar.shift-sidebar {
+    transform: translateX(-230px);
+} */
+
+
+/* responsive sidebar */
+@media(min-width: 787px) {
+    .sidebar.shift-sidebar>ul {
+        overflow: visible;
+    }
+    .sidebar.shift-sidebar>ul li {
+        position: relative;
+    }
+    .sidebar.shift-sidebar>ul li a {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .sidebar.shift-sidebar>ul li a .fa,
+    .sidebar.shift-sidebar>ul li a .icon {
+        position: static;
+    }
+    .sidebar.shift-sidebar>ul li .havemenu .arrow {
+        display: none;
+    }
+    .sidebar.shift-sidebar {
+        width: 59px;
+        border-right: solid 1px #d4d7db;
+    }
+    .sidebar.shift-sidebar>ul li a span {
+        position: absolute;
+        opacity: 0;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 175px;
+        padding: 10px 10px 10px 48px;
+        background: #eceff4;
+        white-space: nowrap;
+        z-index: -1;
+    }
+    .sidebar.shift-sidebar>ul li a:hover>span {
+        opacity: 1;
+    }
+    .sidebar.shift-sidebar>ul li.active a:hover>span {
+        background: #f7a80d;
+    }
+    .sidebar.shift-sidebar>ul li .havemenu>ul li a {
+        padding-left: 45px;
+    }
+    .sidebar.shift-sidebar>ul li a.open+ul {
+        overflow: visible;
+    }
+    /*  .sidebar ul li a.open+ul li a {
+        padding: 10px 20px 10px 45px;
+    }
+    .sidebar ul li a.open+ul li a .fa,
+    .sidebar ul li a.open+ul li a .icon {
+        position: absolute;
+    }
+    .sidebar ul li a.open+ul li a span {
+        position: static;
+        display: inline;
+        padding: 0;
+        opacity: 1;
+        background: none;
+    }
+    .sidebar ul li a.open>span {
+        opacity: 1;
+        background: #d0d0d0;
+    } */
+}
+
+@media(max-width: 786px) {
+    .sidebar {
+        transform: translateX(-250px)
+    }
+    .sidebar.shift-sidebar {
+        transform: translateX(0);
+    }
+}

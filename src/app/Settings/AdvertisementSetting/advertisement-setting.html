@@ -1,0 +1,37 @@
+<ngx-loading [show]="false" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
+<h5 class="with-border">Advertisement Setting</h5>
+<div class="row" id="accuntSetup" id="myDiv2">
+  <div id="amazon-root"></div>
+  <div class="col-lg-12">
+    <p-dataTable [value]="advMerchantList" [loading]="advMerchantLoader" [rows]="10" [paginator]="false" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-header>
+            <div class="row">
+                <div class="col-md-1">
+                    <p-radioButton name="group2" value="NA" label="NA" (click)="selectRegion()" [(ngModel)]="selectedRegion" inputId="preopt1"></p-radioButton>
+                </div>
+                <div class="col-md-1">
+                    <p-radioButton name="group2" value="EU" label="EU" (click)="selectRegion()" [(ngModel)]="selectedRegion" inputId="preopt1"></p-radioButton>
+                </div>
+                <div class="col-md-2">
+                    <button style="cursor: pointer;" onclick="callAmzon(event)" value="{{advBaseUrl}}">
+                        <img border="0" alt="Login with basic campaign_management permission" src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
+                          width="156" height="32" />
+                      </button>
+                </div>
+              </div>
+          </p-header>
+      <p-column field="MerchantId" header="Merchant Id"></p-column>
+      <p-column field="MerchantAccountName" header="Account Name"></p-column>
+      <p-column field="AdvAccessToken" header="Access Token"></p-column>
+      <p-column field="AdvTokenType" header="Token Type"></p-column>
+      <p-column field="AdvProfileIdNA" header="profileId NA"></p-column>
+      <p-column styleClass="col-button wd10pr" [style]="{'text-align': 'center'}" header="Reset">
+        <ng-template let-item="rowData" pTemplate type="body">
+          <p-inputSwitch [disabled]="!item.IsAdvActive" [ngStyle]="{'pointer-events':!item.IsAdvActive  ? 'none' : '' }" onLabel="Yes" offLabel="No"
+            [(ngModel)]="item.IsAdvActive" (click)="resetAdv(item)"></p-inputSwitch>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

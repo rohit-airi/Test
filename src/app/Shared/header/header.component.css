@@ -1,0 +1,141 @@
+.header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 99;
+    border-bottom: solid 1px #d4d7db;
+}
+
+.header-in {
+    position: relative;
+}
+
+.header .brand {
+    width: 225px;
+    float: left;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.header .brand .desktop-view {
+    display: block;
+    margin: auto;
+}
+
+.header .brand .mobile-view {
+    display: none;
+    margin: auto;
+}
+
+.header .header-menus {
+    padding-left: 15px;
+    margin-left: 225px;
+}
+
+.header .header-togglebtn {
+    float: left;
+    padding: 15px 0;
+}
+
+.header .header-togglebtn button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header .header-togglebtn button:focus {
+    outline: none;
+}
+
+.header .header-right {
+    float: right;
+    padding: 0 0;
+}
+
+.header-right .message {
+    display: inline-block;
+    padding: 20px 10px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.header-right .user-profile {
+    padding: 10px 15px;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.header-right .user-profile .user-img {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    vertical-align: top;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.header-right .user-profile .user-name {
+    display: inline-block;
+    padding-right: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.header-right .user-profile .user-name .user-arrow {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    height: 10px;
+    line-height: 0;
+}
+
+.header-right .user-profile .user-name .user-arrow img {
+    width: 10px;
+    height: 10px;
+}
+
+.header-right .username-text {
+    font-weight: bold;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header-right .user-profile .user-name p {
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #828282;
+}
+
+
+/* responsive */
+
+@media(max-width: 980px) {
+    .header-in {
+        margin: 0 -15px;
+    }
+    .header .brand {
+        width: 90px;
+        padding: 5px;
+    }
+    .header .header-menus {
+        margin-left: 90px;
+    }
+    .header-right .user-profile .user-img {
+        display: none;
+    }
+    .header .brand .desktop-view {
+        display: none;
+    }
+    .header .brand .mobile-view {
+        display: block;
+    }
+}

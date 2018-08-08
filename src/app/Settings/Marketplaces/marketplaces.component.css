@@ -1,0 +1,4 @@
+/* Change color of checkbox selection */
+.ui-datatable tbody>tr.ui-widget-content.ui-state-highlight {
+  background-color:lightyellow;
+}

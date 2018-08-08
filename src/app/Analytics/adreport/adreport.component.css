@@ -1,0 +1,27 @@
+.adreportfilter {
+    margin-bottom: 15px;
+}
+
+.adreportfilter .form-group {
+    width: auto;
+    flex: 0 0 16%;
+    max-width: 16%;
+}
+
+.adreportfilter .data-filter-bottom {
+    margin-top: 10px;
+}
+
+.adreportfilter .form-btn label {
+    display: block;
+}
+
+@media(max-width: 1092px) {
+    .adreportfilter .form-group {
+        flex: 0 0 auto;
+        max-width: none;
+    }
+    .adreportfilter .data-filter-bottom {
+        flex-wrap: wrap;
+    }
+}

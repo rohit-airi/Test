@@ -1,0 +1,187 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0' }"></ngx-loading>
+<h5 class="with-border">Log Comments</h5>
+<div class="row">
+  <div class="col-sm-12">
+    <form class="form-horizontal register-wrap" [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+      <input type="hidden" [(ngModel)]="currentLogCommentId" formControlName="LogCommentId" />
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label>
+                Merchant
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" id="select" formControlName="Merchant" [(ngModel)]="currentMerchant" (change)="updateMerchant()">
+                <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label>
+                Marketplace
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" formControlName="MerchantId" [(ngModel)]="currentmarketPlace">
+                <option *ngFor="let marketplace of marketPlaceModel" [value]="marketplace.MWSMarketPlaceId">{{marketplace.MarketPlaceName}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Parent
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-9">
+              <!-- <p-dropdown [(ngModel)]="selectedParent" [options]="ParentList"  placeholder="Select parent" (onChange)="onSelectParent($event)" [style]="{'width':'320px'}" formControlName="ParentItemId"></p-dropdown> -->
+              <p-autoComplete [(ngModel)]="selectedParent" (onSelect)="onSelectParent($event)" [suggestions]="ParentList" (completeMethod)="searchparentSku($event)"
+                formControlName="ParentItemId" inputStyleClass="form-control">
+              </p-autoComplete>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Child
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-9">
+              <!-- <p-dropdown [(ngModel)]="selectedChild" [options]="ChildList" placeholder="Select Child" (onChange)="onSelectChid($event)"  [style]="{'width':'320px'}" formControlName="ChildItemId"></p-dropdown> -->
+              <p-autoComplete [(ngModel)]="selectedChild" (onSelect)="onSelectChid($event)" formControlName="ChildItemId" [suggestions]="ChildList"
+                (completeMethod)="searchFilter2Childsku($event)" inputStyleClass="form-control">
+              </p-autoComplete>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Change Type
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-9">
+              <p-dropdown [(ngModel)]="selectedchangeType" [options]="ChangeID" (onChange)="changeType()" [style]="{'width':'320px'}" formControlName="ChangeType"></p-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div clas="row" *ngIf="selectedchangeType > 0">
+        <div class="col-md-5 form-group change-type-child">
+          <div *ngIf="selectedchangeType===1" class="upload">
+            <!-- <div>Old Value: </div> -->
+            <p-fileUpload customUpload="true" auto="auto" (uploadHandler)="getFiles($event,'OldFile')"></p-fileUpload>
+            <div class="d-inline-block">
+              <img src="assets/themes/images/upload.png" alt=" " />
+              <h6>Upload Your Image File</h6>
+            </div>
+            <span *ngIf="buttonText===1" style="margin:0 -265px 0 21px" class="fetch-image">
+              <img src="{{imageSrc}}">
+            </span>
+          </div>
+          <br>
+          <br>
+        </div>
+        <div *ngIf="selectedchangeType > 1" class="col-md-6 form-group change-type-child">
+          <div class="row form-group">
+            <div class="col-md-3">
+              <label>{{OldBidValue}}
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-6">
+              <input [(ngModel)]="oldBid" type="text" formControlName="OldValue" class="form-control" maxlength="50" />
+            </div>
+          </div>
+          <div *ngIf="selectedchangeType!==1" class="row form-group">
+            <div class="col-md-3">
+              <label>{{NewBidValue}}
+                <span class="Required_Icon text-danger"> *</span>
+              </label>
+            </div>
+            <div class="col-md-6">
+              <input [(ngModel)]="newBid" type="text" formControlName="NewValue" class="form-control" maxlength="50" />
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="firstname" class="col-sm-3 control-label"> </label>
+            <input type="text" formControlName="CommentBy" style="display:none;" [(ngModel)]="UserId">
+            <div class="col-sm-12 p-0 mt-3">
+              <button type="submit" class="btn btn-primary">{{buttonText=== 0 ? 'Submit': 'Update'}}</button>
+              <button type="button" class="btn btn-default" (click)="resetForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-sm-12">
+    <div class="ui-widget-header text-right" style="padding:10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+    </div>
+    <p-dataTable [value]="logList" [globalFilter]="gb" #dt [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[20,50,100]"
+      [loading]="loading" loadingIcon="fa-spinner" [responsive]="true">
+      <p-column field="ParentItemID" header="Parent" [style]="{'text-align': 'center'}"></p-column>
+      <p-column field="ChildItemID" header="Child" [style]="{'text-align': 'center'}"></p-column>
+      <p-column field="ChangeType" header="Change Type" [style]="{'text-align': 'center'}"></p-column>
+      <p-column field="OldValue" header="Old Value" [style]="{'text-align': 'center'}">
+        <ng-template let-col let-logList="rowData" pTemplate="body">
+          <span *ngIf="logList.ChangeTypeValue !== 1">{{logList[col.field]}}</span>
+          <span *ngIf="logList.ChangeTypeValue === 1 && logList.OldValue !==''">
+            NA
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column field="NewValue" header="New Value" [style]="{'text-align': 'center'}">
+        <ng-template let-col let-logList="rowData" pTemplate="body">
+          <span *ngIf="logList.ChangeTypeValue !== 1">{{logList[col.field]}}</span>
+          <span *ngIf="logList.ChangeTypeValue === 1">
+            <a target="_blank" href="{{logList[col.field]}}">
+              <img src="{{logList[col.field]}}" style="width: 40%;height:4%" />
+            </a>
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column field="CommentedOn" header="Change On" [style]="{'text-align': 'center'}">
+        <ng-template let-col let-logList="rowData" pTemplate="body">
+          <span>{{logList[col.field] | date: 'MMM-dd-yyyy'}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="" [style]="{'text-align': 'center'}" header="Action" [filter]="false" [style]="{'width':'150px'}">
+        <ng-template let-item="rowData" pTemplate type="body">
+          <button pTooltip="Edit User" data-toggle="modal" style="cursor: pointer;color:#f7a80d" tooltipPosition="top" placeholder="Top"
+            class="btn custom-btn-click" (click)="OnEdit(item)">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </button>
+          <button pTooltip="Delete user" style="cursor: pointer;color:#f7a80d" tooltipPosition="top" placeholder="Top" class="btn custom-btn-click"
+            type="button" (click)="OnDelete(item)" icon="fa-trash">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" class="log-module-dialog"></p-confirmDialog>

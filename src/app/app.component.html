@@ -1,0 +1,12 @@
+<div id="wrapper" [ngClass]="{'open-sidebar': commonservice.toggleSidebar}">
+    <!-- Navigation -->
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="admin-mid" [ngClass]="{'expand-rightside': commonservice.toggleSidebar}">
+        <div class="admin-mid-in">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<p-growl [value]="Notifications" life="5000"></p-growl>

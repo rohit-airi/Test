@@ -1,0 +1,48 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
+<h5 class="with-border">Account Setting</h5>
+<div class="row" id="accuntSetup" id="myDiv2">
+  <div class="col-lg-12">
+    <p-dataTable [value]="merchantList" [loading]="merchantLoader" [rows]="10" [paginator]="false" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+      <p-header>
+        <div class="ui-helper-clearfix">
+          <button pTooltip="Add Merchant" data-toggle="modal" style="cursor: pointer;color:#f7a80d" tooltipPosition="top" placeholder="Top"
+            class="btn custom-btn-click" (click)="displayModalData(addnew)">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </button>
+        </div>
+      </p-header>
+      <p-column field="MerchantId" header="Merchant Id"></p-column>
+      <p-column field="MerchantAccountName" header="Account Name"></p-column>
+      <p-column field="AuthTokenId" header="Token Id"></p-column>
+      <p-column styleClass="col-button wd10pr" [style]="{'text-align': 'center'}" header="Default">
+          <ng-template let-item="rowData" pTemplate type="body">
+              <p-inputSwitch [disabled]="item.IsDefault || !item.IsActive" [ngStyle]="{'pointer-events':item.IsDefault || !item.IsActive ? 'none' : '' }" onLabel="Yes" OffLabel="No" (click)="enableOrDisable(item)" [(ngModel)]="item.IsDefault">
+                </p-inputSwitch>
+          </ng-template>
+        </p-column>
+      <p-column styleClass="col-button wd10pr" [style]="{'text-align': 'center'}" header="Active">
+        <ng-template let-item="rowData" pTemplate type="body">
+            <p-inputSwitch [disabled]="item.IsDefault" [ngStyle]="{'pointer-events':item.IsDefault  ? 'none' : '' }" onLabel="Yes" offLabel="No" [(ngModel)]="item.IsActive" (click)="enableOrDisable(item)"></p-inputSwitch>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
+<!-- <p-growl></p-growl> -->
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- Add New Merchant Modal -->
+<div id="testDiv">
+<ng-template  #addnew>
+    <p-growl [(value)]="msgsMerchant" [life]="10000"></p-growl>
+  <ngx-loading [show]="Newmerchantloading" [config]="{ backdropBorderRadius: '0px !important' }"></ngx-loading>
+  <div class="modal-header" id="mainDIV">
+    <h4 class="modal-title">Add New merchant</h4>
+    <button type="button" class="close" data-dismiss="modal" (click)="modalRef.hide()">&times;</button>
+  </div>
+  <div class="modal-body">
+   <app-amazonsetup [newmerchant]="isNewMerchantClicked" (messageEvent)="receiveMessage($event)"></app-amazonsetup>
+  </div>
+</ng-template>
+</div>
+<!-- End here -->

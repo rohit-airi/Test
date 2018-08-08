@@ -1,0 +1,194 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+<section class="setup_wizard">
+  <div *ngIf="firstWZD && !newmerchant" class="row first_Wizard">
+    <div class="col-sm-12 text-center">
+      <p class="mb15 main-title">Welcome to your AmazonMWS account</p>
+      <p>AmazonMWS Anaytics help you to increase your sucess on Amazon.</p>
+      <p>Start immediately and set up your account.</p>
+      <button (click)="NextStep()" class="btn btn-primary">Setting up account</button>
+    </div>
+  </div>
+  <div *ngIf="secondWZD && !newmerchant" class="Second_Wizard">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="mb15 main-title">Select Seller Type</p>
+        <p>First, you must set the seller types in your AmazonMWS Analytics account. By selecting the seller type, we can tailor
+          the software to you better. The vendor type can be changed later</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-4 text-center Seller_Detail_Warp d-none">
+        <div class="Seller_Type">
+          <span class="seller_icon">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </span>
+          <p>I sell on the Seller program</p>
+          <div class="btn_wrap">
+            <button class="btn btn-primary">Further Than Seller</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center Seller_Detail_Warp">
+        <div class="Seller_Type">
+          <span class="seller_icon">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </span>
+          <p>I sell on the Seller program</p>
+          <div class="btn_wrap">
+            <button (click)="NextSteps()" class="btn btn-primary">Further Than Seller</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center Seller_Detail_Warp d-none">
+        <div class="Seller_Type">
+          <span class="seller_icon">
+            <i class="fa fa-truck" aria-hidden="true"></i>
+          </span>
+          <p>I sell on the Seller program</p>
+          <div class="btn_wrap">
+            <button class="btn btn-primary">Further Than Seller</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="thirldWZD || newmerchant" class="Third_Wizard">
+      <div class="Seller_API">
+        <p class="main-title">MWS Seller Central API connect to your account setup</p>
+        <p-tabView (onChange)="onTabChange($event)" [activeIndex]="index">
+            <p-tabPanel header="Step-1">
+                <ul>
+                  <li>1. Click on the button to go to the Sharing Setting.
+                    <div class="API_btn_Wrap">
+                      <button type="button" (click)="redirectToSeller()" class="btn btn-primary">to Seller Central API released</button>
+                    </div>
+                  </li>
+                  <li>2. Login with your data, unless you are not already logged in</li>
+                  <li>3. Enter as in the screenshot shown the following data
+                    <div class="label_Wrap">
+                      <span>AmazonMWS</span>
+                      <span>1807-5651-7061</span>
+                    </div>
+                  </li>
+                  <li>
+                     4. Click Next
+                    <div class="screenshot_wrap">
+                      <p class="check_box">I want to use an application to access my Amazon seller with MWS
+                      </p>
+                      <p>Application Name
+                        <label>AmazonMWS</label>
+                      </p>
+                      <p>Application Developer Account Number
+                        <label>1807-5651-7061</label> For Example: 1234-1234-1234 or 123412341234</p>
+                    </div>
+                  </li>
+                </ul>
+            </p-tabPanel>
+            <p-tabPanel header="Step-2">
+                <ul>
+                  <li>5. Put the check boxes as shown and click Next
+                    <div class="screenshot_wrap">
+                      <p>Amazon Marketplace Web Services allow you to give third party solution providers access to your Amazon Selling
+                        Account.If you give third parties access to your account, you are responsible for all action taken by the
+                        third parties in connection with your account. Also, do not provide your Amazon user name and password information
+                        to anyone who contacts you by email or phone and ask for his information even if they claim to be from Amazon.
+                        No one form Amazon will ever ask you to verify your user name and password outside of your own logging into
+                        your Amazon Selling Account.</p>
+                      <p>
+                        <b>Also, do not provide your Amazon user name and password information to anyone who contacts you by email or
+                          phone and ask for his information even if they claim to be from Amazon. No one form Amazon will ever ask
+                          you to verify your user name and password outside of your own logging into your Amazon Selling Account.</b>
+                      </p>
+                      <p class="check_box">I understand that I take complete responsibility for the acts and omissions of
+                        <b>AmazonMWS</b> regarding my Amazon selling account and hereby direct Amazon to allow
+                        <b>AmazonMWS</b> to access my Amazon Selling account.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </p-tabPanel>
+            <p-tabPanel header="Final">
+                <form [formGroup]="amazonSetupForm" (ngSubmit)="finalStep(amazonSetupForm.value)" autocomplete="off">
+                <ul>
+                  <li>6. Copy the Seller ID and the token _ in the space provided below the screenshot.
+                    <div class="screenshot_wrap Vendor_ID">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tr>
+                            <th colspan="2" class="text-center">Seller account identifiers for AmazonMWS</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="table_Heading">Seller ID:</div>
+                            </td>
+                            <td>
+                              <label>ADDGFRRTGCF</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="table_Heading">Marketplace ID:</div>
+                            </td>
+                            <td>
+                              <ul>
+                                <li>SDFSDRGERDFGRT (IBA)</li>
+                                <li>ASDS876DF2H2JJ (Amazon.ca)</li>
+                                <li>LK84J777HDN3NU (Amazon.com)</li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tr>
+                            <th colspan="2" class="text-center">Seller-Developer Authorization</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="table_Heading">MWS Auth Token:</div>
+                            </td>
+                            <td>
+                              <label>amazon.mws.16abffd2-9377-72da-3434nbfdnfbd</label>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row vendor_input_wrap">
+                      <div class="col-md-3">
+                            <input minlength="1" maxlength="15" type="text" [(ngModel)]="merchantName" class="form-control" formControlName="MerchantName" name=""
+                            placeholder="Merchant Name">
+                        </div>
+                      <div class="col-md-3">
+                        <input minlength="10" maxlength="13" type="text" [(ngModel)]="sellerId" class="form-control" formControlName="SellerId" name=""
+                          placeholder="Seller ID">
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" minlength="10" maxlength="45" [(ngModel)]="AuthToken" class="form-control" name="" formControlName="TokenId"
+                          placeholder="Auth Token">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    7. You did it! Click Integration Complete
+                  </li>
+                </ul>
+                <div class="row submit_btn_wrap">
+                    <div class="col-md-6 back_btn">
+                      <button *ngIf="!newmerchant" (click)="step2()" class="btn btn-primary">Back</button>
+                    </div>
+                    <div class="col-md-6 complete_btn">
+                      <button [disabled]="!amazonSetupForm.valid" class="btn btn-primary">complete integration</button>
+                    </div>
+                  </div>
+                </form>
+            </p-tabPanel>
+        </p-tabView>
+        <div class="next_prev_button">
+            <button type="button" [disabled]="index===0" pButton icon="fa fa-chevron-left" (click)="openPrev()"></button>
+            <button type="button" [disabled]="index===2" pButton icon="fa fa-chevron-right" (click)="openNext()"></button>
+        </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<p-growl [(value)]="msgs" life="5000"></p-growl>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<h5 class="with-border">DSTBCI (Detail Sales Traffic By Child Item)</h5>
+<div class="panel">
+  <div class="top-panel1">
+    <div class="row">
+      <div class="col-3 top-panel-inner">
+        <div>
+          <label>
+            Merchant
+          </label>
+          <select class="form-control" id="select" [(ngModel)]="currentMerchant" (change)="getLastUploadFileDate()">
+            <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3 top-panel-inner">
+        <div>
+          <label>
+            Marketplace:
+          </label>
+          <select class="form-control" [(ngModel)]="currentmarketPlace">
+            <option *ngFor="let marketplace of marketPlaceModel" [value]="marketplace.MWSMarketPlaceId">{{marketplace.MarketPlaceName}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3 top-panel-inner">
+        <div>
+          <label>
+            Report Date:
+          </label>
+          <div class="inner-addon right-addon">
+            <i class="icon" (click)="dp1.show() ">
+              <img src="assets/svg/calendar.svg" alt="" />
+            </i>
+            <input [(ngModel)]="reportDate" type="text" dateFormat="dd.mm.yy" [maxDate]="maxdate" class="form-control" bsDatepicker #dp1="bsDatepicker"
+              [bsConfig]="bsConfig">
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="custom-label1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-wrap">
+    <div class="upload">
+      <p-fileUpload [disabled]="!reportDate" customUpload="true" auto="auto" (uploadHandler)="getChildFiles($event)"></p-fileUpload>
+      <div class="">
+        <img src="assets/themes/images/upload.png" alt=" " />
+        <h6>Upload Your File</h6>
+      </div>
+    </div>
+    <div class="upload-condition">Last Upload: last upload report date is {{lastUploadDate}}</div>
+  </div>
+</div>

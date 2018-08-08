@@ -1,0 +1,37 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
+<h5 class="with-border">Marketplaces</h5>
+<div class="row mt-3">
+  <div class="col-sm-12">
+    <p-dataTable [(selection)]="selectedmarketPlace" [editable]="false" [value]="marketPlaceList" [loading]="MarketPlaceLoading"
+      [rows]="10" [paginator]="false" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+      <p-header>
+        <div class="row">
+          <div class="col-md-1 text-md-left">
+            <label class="">
+              Merchant:
+            </label>
+          </div>
+          <div class="col-md-2">
+            <select class="form-control" id="select" [(ngModel)]="currentMerchant" (change)="getAllMarketPlace()">
+              <option *ngFor="let merchant of merchantListModel" [value]="merchant.MerchantId">{{merchant.MerchantAccountName}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </p-header>
+      <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+      <p-column [style]="{'width':'15%'}" field="RegionCode" header="Region Code"></p-column>
+      <p-column [style]="{'width':'25%'}" field="MWSMarketPlaceId" header="Marketplace Id"></p-column>
+      <p-column [style]="{'width':'25%'}" field="MarketPlaceName" header="Marketplace Name"></p-column>
+      <p-column [style]="{'width':'30%'}" field="SalesChannel" header="Sales Channel"></p-column>
+    </p-dataTable>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-sm-12">
+    <div class="login-button register-submit">
+      <button type="submit" class="btn btn-primary" (click)="addUpdatemarketPlace()" [disabled]="selectedmarketPlace.length<=0">Submit</button>
+    </div>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

@@ -1,0 +1,56 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0' }"></ngx-loading>
+
+<p-growl></p-growl>
+<div class="login">
+    <div class="login-top">
+        <img src="assets/themes/images/logo.png" alt="logo">
+    </div>
+    <div class="login-wrap">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" autocomplete="off">
+            <div class="login-title text-center">
+                <h4>Login</h4>
+                <p>Kindly enter your details in order to log into account.</p>
+            </div>
+            <div class="login-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input pInputText type="email" [(ngModel)]="model.email" class="form-control" placeholder="Enter Email" maxlength="50" formControlName="email" #email required/>
+
+                    <div *ngIf="form.controls['email'].dirty && !form.controls['email'].valid && form.controls['email'].touched && form.controls['email'].errors" class="error-message">
+                        <div class="alert alert-danger" *ngIf="form.controls['email'].errors.required">Email is required</div>
+                        <div class="alert alert-danger" *ngIf="!form.controls['email'].errors.required && form.controls['email'].errors.pattern">This is not a valid email</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input pInputText id="password" type="password" [(ngModel)]="model.password" class="form-control" placeholder="Enter Password" maxlength="20" formControlName="password" #password required/>
+                    <div class="alert alert-danger" *ngIf="!form.controls['password'].valid && form.controls['password'].touched">Password is Required</div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" [(ngModel)]="model.rememberme" id="rememberme" formControlName="rememberme" class="form-check-input">
+                    <label class="form-check-label" for="rememberme">
+
+                        Remember me
+                    </label>
+
+                </div>
+              <div class="login-button">
+                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+                <div class="text-center">
+                  <a href="" [routerLink]="['/account/forgot']">Forgot password?</a>
+                </div>
+                <div class="text-center">
+                  Don't have account? <a href="" class="jump-to-link" [routerLink]="['/account/signup']">Get Started</a>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="copyright">
+  <div class="pull-center" style="margin: 0 0 0 633px;">
+    <sup></sup>
+    <br>
+    <a target="_blank" href="" [routerLink]="['/account/privacy']">Privacy policy</a>
+  </div>
+</div>

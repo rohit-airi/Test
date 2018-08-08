@@ -1,0 +1,48 @@
+.width150 {
+  width: 50px;
+}
+.dialogClass {
+  overflow: scroll;
+  max-height: 30%;
+
+}
+.btn-download{
+  margin: 0 15px 0 10px;
+}
+
+.btn-download .fa{
+  margin-right: 7px;
+}
+.clsUnit{
+  text-align: left;
+  margin-left:10px;
+}
+.download-by-button .ui-menu.ui-menu-dynamic{right: 0!important;left: auto!important;}
+.btn-download .fa{margin-right: 0!important;}
+.adreportfilter {
+  margin-bottom: 15px;
+}
+
+.adreportfilter .form-group {
+  width: auto;
+  flex: 0 0 16%;
+  max-width: 16%;
+}
+
+.adreportfilter .data-filter-bottom {
+  margin-top: 10px;
+}
+
+.adreportfilter .form-btn label {
+  display: block;
+}
+
+@media(max-width: 1092px) {
+  .adreportfilter .form-group {
+      flex: 0 0 auto;
+      max-width: none;
+  }
+  .adreportfilter .data-filter-bottom {
+      flex-wrap: wrap;
+  }
+}

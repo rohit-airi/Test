@@ -1,0 +1,248 @@
+.mb15 {
+	margin-bottom: 15px;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+.mb50 {
+	margin-bottom: 50px;
+}
+.mb30 {
+	margin-bottom: 30px;
+}
+.mb50 {
+	margin-bottom: 50px;
+}
+button {
+	white-space: normal;
+	line-height: normal;
+}
+.Seller_Detail_Warp {
+	display: flex;
+}
+.Seller_Type {
+    background: #fff;
+    border: 1px solid #f7a80d;
+    padding: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.Seller_Type span.seller_icon {
+    display: block;
+    font-size: 6em;
+    margin: 10px 0 20px 0;
+    color:#5b5a5a;
+}
+.Seller_API {
+    text-align: center;
+}
+.Seller_API ul {
+    text-align: left;
+    margin: 40px 0 30px 0;
+    padding-left: 20px;
+}
+.Seller_API ul li {
+    /* list-style-type: decimal; */
+    font-size: 15px;
+    color: #6b6a6a;
+    line-height: 2;
+}
+.API_btn_Wrap, .label_Wrap {
+    margin: 25px 0;
+    text-align: center;
+    display: block;
+}
+.label_Wrap span {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    color: #f7a80d;
+    border: 1px solid #f7a80d;
+    font-size: 16px;
+}
+.label_Wrap {
+    margin: 20px 0;
+}
+.screenshot_wrap {
+    background-color: #f7f9fa;
+    border: 1px solid #d8d9da;
+    padding: 15px 15px 15px 30px;
+    margin: 20px 0;
+}
+
+.screenshot_wrap p:last-child {
+    margin-bottom: 0;
+}
+.screenshot_wrap label {
+    background-color: #d4c7c7;
+    padding: 0 5px;
+    margin-left: 4px;
+}
+.check_box {
+    position: relative;
+}
+.check_box:before {
+    content: '';
+    width: 12px;
+    height:  12px;
+    display: block;
+    position: absolute;
+    left: -20px;
+    top: 4px;
+    background:url('../../assets/themes/images/check_img.jpg') no-repeat;
+    background-size: 12px 12px;
+}
+.screenshot_wrap a {
+    font-weight: bold;
+    border-bottom: 1px solid;
+}
+.screenshot_wrap.Vendor_ID {
+	padding-left: 15px;
+}
+
+.screenshot_wrap.Vendor_ID td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+.screenshot_wrap.Vendor_ID td .table_Heading {
+    width: 160px;
+    word-wrap: break-word;
+    word-break: break-all;
+        font-weight: bold;
+}
+
+.screenshot_wrap.Vendor_ID td:first-child {
+    width: 1%;
+}
+
+.screenshot_wrap.Vendor_ID td label {
+    margin-bottom: 0;
+    padding: 4px 10px !important;
+}
+
+.screenshot_wrap.Vendor_ID table td ul {
+    margin: 0 !important;
+    padding: 0;
+}
+.screenshot_wrap.Vendor_ID table td ul li {
+	list-style-type: none;
+}
+.vendor_input_wrap input {margin-bottom: 20px;}
+.vendor_input_wrap {
+    margin-top: 30px;
+}
+.back_btn button {
+    margin-right: 5px;
+    padding: 12px 24px;
+}
+.back_btn {
+    margin-bottom: 20px;
+    padding-left: 35px;
+}
+.back_btn span{
+    vertical-align: -webkit-baseline-middle;
+    margin-left: 20px;
+}
+@media(min-width: 768px) {
+	.complete_btn {
+    text-align: right;
+}
+.back_btn {
+    text-align: left;
+
+}
+}
+
+.Sign_up_form {
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto 30px auto;
+}
+.first_Wizard{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 10px;
+    border: 1px solid #d8d9da;
+    background-color: #fffefe;
+}
+.first_Wizard .main-title{
+    font-size: 23px;
+    color: #f7a80d;
+    border-bottom: 1px solid #d8d9da;
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.first_Wizard p{
+   color: #6a6c6f;
+   font-size: 18px;
+   margin: 30px 0;
+}
+.first_Wizard button{
+    font-size: 15px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.Second_Wizard{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 10px;
+    border: 1px solid #d8d9da;
+    background-color: #fffefe;
+}
+.Second_Wizard .main-title{
+    font-size: 23px;
+    color: #f7a80d;
+    border-bottom: 1px solid #d8d9da;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    padding-top: 5px;
+}
+.Second_Wizard p{
+   color: #6a6c6f;
+   font-size: 14px;
+}
+.Second_Wizard .btn_wrap button{
+    font-size: 14px;
+    text-transform: capitalize;
+    margin: 10px 0 0;
+}
+.Third_Wizard{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 5px auto;
+  padding: 4px;
+  border: 1px solid #d8d9da;
+  background-color: #fffefe;
+}
+.Third_Wizard .main-title{
+  font-size: 21px;
+  color: #f7a80d;
+  border-bottom: 1px solid #d8d9da;
+  margin-bottom: 5px;
+  padding-bottom: 7px;
+  padding-top: 5px;
+}
+.Third_Wizard p.tagline{
+    color: #673604;
+    font-size: 20px;
+ }
+ .Third_Wizard button{
+    font-size: 14px;
+    text-transform: capitalize;
+    margin: 10px 0 0;
+    padding: 10px 20px 8px;
+}
+.next_prev_button {
+  position: absolute;
+  top: 7%;
+  right: 4%;
+}
